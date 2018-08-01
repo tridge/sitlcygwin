@@ -6,11 +6,13 @@ set EXTRAFLAGS = -DHAVE_CMATH_ISFINITE -DNEED_CMATH_ISFINITE_STD_NAMESPACE -DHAV
 
 cd /cygdrive/C/cygwin/home/media/ardupilot/
 
+git reset --hard origin/master
+git clean -f
 git checkout -f master 2>&1 | tee /cygdrive/C/cygwin/home/media/sitl/git.txt
 git pull 2>&1 | tee /cygdrive/C/cygwin/home/media/sitl/git.txt
 git submodule update --init --recursive -f 2>&1 | tee -a /cygdrive/C/cygwin/home/media/sitl/git.txt
 
-git checkout -f APMrover2-release 2>&1 | tee /cygdrive/C/cygwin/home/media/sitl/git.txt
+git checkout -f APMrover2-stable 2>&1 | tee /cygdrive/C/cygwin/home/media/sitl/git.txt
 cd APMrover2
 make clean
 make sitl -j8 -i 2>&1 | tee /cygdrive/C/cygwin/home/media/sitl//APMrover2.txt
