@@ -5,12 +5,13 @@ clone_folder: C:\work\
 init:
 - cmd: git config --global core.autocrlf false
 environment:
-  CYG_ROOT: C:\cygwin
+  CYG_ROOT: C:\cygwin64
+  CYG_SETUP: setup-x86_64.exe
 install:
 - cmd: >-
     dir %CYG_ROOT%
 
-    %CYG_ROOT%\setup-x86.exe --quiet-mode --no-shortcuts --only-site -R "%CYG_ROOT%" -P gcc-core,gcc-g++,gawk,autoconf,automake,make,gdb,git,mingw-x86-winpthreads,ccache,procps,libtool,libexpat,g++,python,python-setuptools
+    %CYG_ROOT%\%CYG_SETUP% --quiet-mode --no-shortcuts --only-site -R "%CYG_ROOT%" -P gcc-core,gcc-g++,gawk,autoconf,automake,make,gdb,git,mingw-x86-winpthreads,ccache,procps,libtool,libexpat,g++,python,python-setuptools
 
     %CYG_ROOT%\bin\bash.exe -l -c "whereis pip"
 
@@ -24,7 +25,7 @@ install:
     
     %CYG_ROOT%\bin\bash.exe -l -c "/usr/bin/easy_install-2.7 pexpect"
     
-    rem c:\cygwin\bin\bash.exe -l -c "/usr/bin/pip2.7 install future pymavlink droneapi MAVProxy pexpect"
+    rem c:\%CYG_ROOT\bin\bash.exe -l -c "/usr/bin/pip2.7 install future pymavlink droneapi MAVProxy pexpect"
 build_script:
 - cmd: >-
     git clone --depth=1 --branch=master https://github.com/ArduPilot/ardupilot.git C:\work\ardupilot\
@@ -50,9 +51,9 @@ artifacts:
   name: sitl
 deploy_script:
 - cmd: >-
-    mkdir c:\cygwin64\home\media
+    mkdir c:\%CYG_ROOT\home\media
 
-    echo %sitlkey% > c:\cygwin64\home\media\sitlkey
+    echo %sitlkey% > c:\%CYG_ROOT\home\media\sitlkey
 
     rem %CYG_ROOT%\bin\rsync -Pv -e '/usr/bin/ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /home/media/sitlkey' *.elf michael@mega.ardupilot.org:MissionPlanner/sitl/
 
