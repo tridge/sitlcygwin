@@ -10,7 +10,7 @@ install:
 - cmd: >-
     dir %CYG_ROOT%
 
-    %CYG_ROOT%\setup-x86.exe --quiet-mode --no-shortcuts --only-site -R "%CYG_ROOT%" -P gcc-core,gcc-g++,gawk,autoconf,automake,make,gdb,git,mingw-x86-winpthreads,ccache,procps,libtool,libexpat,g++,python,python-setuptools
+    %CYG_ROOT%\setup-x86.exe --quiet-mode --no-shortcuts --only-site -R "%CYG_ROOT%" -P gawk,autoconf,automake,make,gdb,git,mingw-x86-winpthreads,ccache,procps,libtool,libexpat,g++,python,python-setuptools
 
     %CYG_ROOT%\bin\bash.exe -l -c "whereis pip"
 
