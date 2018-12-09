@@ -5,8 +5,8 @@ clone_folder: C:\work\
 init:
 - cmd: git config --global core.autocrlf false
 environment:
-  CYG_ROOT: C:\cygwin64
-  CYG_SETUP: setup-x86_64.exe
+  CYG_ROOT: C:\cygwin
+  CYG_SETUP: setup-x86.exe
 install:
 - cmd: >-
     dir %CYG_ROOT%
