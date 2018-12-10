@@ -5,13 +5,16 @@ clone_folder: C:\work\
 init:
 - cmd: git config --global core.autocrlf false
 environment:
-  CYG_ROOT: C:\cygwin
+  CYG_ROOT: C:\cygwin32
   CYG_SETUP: setup-x86.exe
 install:
 - cmd: >-
+
+    curl -o setup-cygwin.exe https://www.cygwin.com/%CYG_SETUP%
+
     dir %CYG_ROOT%
 
-    %CYG_ROOT%\%CYG_SETUP% --quiet-mode --no-shortcuts --only-site -R "%CYG_ROOT%" -P gcc-g++,git,procps,libexpat,python,python-setuptools
+    setup-cygwin.exe --quiet-mode --no-shortcuts --only-site -R "%CYG_ROOT%" -P gcc-g++,git,procps,libexpat,python,python-setuptools
 
     %CYG_ROOT%\bin\bash.exe -l -c "/usr/bin/easy_install-2.7 future"
 
