@@ -5,14 +5,14 @@ clone_folder: C:\work\
 init:
 - cmd: git config --global core.autocrlf false
 environment:
-  CYG_ROOT: C:\cygwin32
-  CYG_SETUP: setup-x86.exe
+  CYG_ROOT: C:\cygwin64
+  CYG_SETUP: setup-x86_64.exe
 install:
 - cmd: >-
 
     curl -o setup-cygwin.exe https://www.cygwin.com/%CYG_SETUP%
 
-    setup-cygwin.exe --quiet-mode --no-shortcuts --only-site -R "%CYG_ROOT%" -P gcc-g++,git,procps,libexpat,python,python-setuptools
+    setup-cygwin.exe --quiet-mode --no-shortcuts --only-site -R "%CYG_ROOT%" -P gcc-g++,git,procps,libexpat,python,python-setuptools,cygwin32-gcc-g++
 
     dir %CYG_ROOT%
     dir %CYG_ROOT%\bin
