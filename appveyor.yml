@@ -18,6 +18,10 @@ install:
     
     %CYG_ROOT%\bin\bash.exe -l -c "/usr/bin/easy_install-2.7 pip"
     
+    %CYG_ROOT%\bin\bash.exe -l -c "/usr/bin/easy_install-2.7 future"	
+    	
+    %CYG_ROOT%\bin\bash.exe -l -c "/usr/bin/easy_install-2.7 pexpect"	   
+    
     %CYG_ROOT%\bin\bash.exe -l -c "/usr/bin/pip2.7 install future pexpect"
 build_script:
 - cmd: >-
