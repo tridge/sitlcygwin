@@ -12,6 +12,9 @@ git checkout -f master 2>&1 | tee /cygdrive/c/work/sitl/git.txt
 git pull 2>&1 | tee /cygdrive/c/work/sitl/git.txt
 git submodule update --init --recursive -f 2>&1 | tee -a /cygdrive/c/work/sitl/git.txt
 
+ls -l /bin/g*
+ls -l /usr/bin/g*
+
 ./waf configure --board sitl
 cat build/config.log
 ./waf -j4 copter
