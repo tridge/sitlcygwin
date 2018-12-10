@@ -1,6 +1,7 @@
 #!/bin/bash
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/cygdrive/c/cygwin32/bin:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin"
+export PATH
 
 set -x
 
@@ -15,8 +16,9 @@ git checkout -f master 2>&1
 git pull
 git submodule update --init --recursive -f
 
-ls -l /bin/g*
-ls -l /usr/bin/g*
+ls -l /usr/bin/g++
+/usr/bin/g++ -v || exit 1
+echo | /usr/bin/g++ -dM -E -
 
 ./waf configure --board sitl
 cat build/config.log
