@@ -8,6 +8,9 @@ set -x
 type -all g++
 g++ -v || exit 1
 
+type python
+python --version
+
 cd /cygdrive/c/work/ardupilot/
 
 git reset --hard origin/master
@@ -20,12 +23,14 @@ ls -l /usr/bin/g++
 /usr/bin/g++ -v || exit 1
 echo | /usr/bin/g++ -dM -E -
 
-./waf configure --board sitl
+/usr/bin/python --version
+
+/usr/bin/python waf configure --board sitl
 cat build/config.log
-./waf -j4 copter
-./waf -j4 plane
-./waf -j4 rover
-./waf -j4 heli
+/usr/bin/python waf -j4 copter
+/usr/bin/python waf -j4 plane
+/usr/bin/python waf -j4 rover
+/usr/bin/python waf -j4 heli
 
 cp /cygdrive/c/work/ardupilot/build/sitl/bin/ardurover.exe /cygdrive/c/work/sitl/APMrover2.elf
 cp /cygdrive/c/work/ardupilot/build/sitl/bin/arduplane.exe /cygdrive/c/work/sitl/ArduPlane.elf
